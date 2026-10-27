@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ECG Room | Hospital ECG System</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
+
+<div class="login-page">
+
+
+    <div class="login-layout">
+
+
+        <!-- =================================================
+             LEFT SIDE
+        ================================================== -->
+
+        <div class="login-left">
+
+
+            <!-- Hospital title -->
+
+            <div class="hospital-brand">
+
+                <span class="small-heart">
+                    ♥
+                </span>
+
+                <h1>
+                    Hospital ECG System
+                </h1>
+
+                <p>
+                    Electrocardiogram Management System
+                </p>
+
+            </div>
+
+
+            <!-- ECG Monitor -->
+
+            <div class="ecg-monitor">
+
+
+                <div class="ecg-monitor-title">
+
+                    ECG MONITOR
+
+                    <span class="live-dot"></span>
+
+                    LIVE
+
+                </div>
+
+
+                <!-- ECG Wave -->
+
+                <div class="ecg-wave">
+
+                    <svg
+                        viewBox="0 0 600 150"
+                        preserveAspectRatio="none"
+                    >
+
+                        <polyline
+                            points="
+                            0,75
+                            80,75
+                            120,75
+                            145,75
+                            160,75
+                            170,20
+                            180,130
+                            190,75
+                            270,75
+                            310,75
+                            330,75
+                            345,45
+                            355,105
+                            365,75
+                            440,75
+                            480,75
+                            495,75
+                            510,10
+                            520,140
+                            530,75
+                            600,75
+                            "
+                        />
+
+                    </svg>
+
+                </div>
+
+
+                <div class="ecg-monitor-status">
+
+                    ECG ROOM SYSTEM READY
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Authorized access -->
+
+            <div class="access-message">
+
+                <div class="lock">
+                    🔐
+                </div>
+
+                <h2>
+                    Authorized Access Only
+                </h2>
+
+                <p>
+                    This system is restricted to
+                    authorized ECG-room doctors
+                    and staff.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =================================================
+             RIGHT SIDE
+        ================================================== -->
+
+        <div class="login-right">
+
+
+            <div class="login-card">
+
+
+                <!-- Heart -->
+
+                <div class="login-icon">
+                    💗
+                </div>
+
+
+                <!-- Title -->
+
+                <h2>
+                    ECG Room Login
+                </h2>
+
+
+                <p class="subtitle">
+
+                    Sign in to access the Hospital
+                    ECG Patient Management System.
+
+                </p>
+
+
+                <!-- =================================================
+                     LOGIN FORM
+                ================================================== -->
+
+                <form id="loginForm">
+
+
+                    <!-- Username -->
+
+                    <div class="form-group">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+
+                            <span class="input-icon">
+                                👤
+                            </span>
+
+
+                            <input
+                                <input
+    type="text"
+    id="username"
+    name="username"
+    placeholder="Enter username"
+    autocomplete="off"
+    required
+>
+                            
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+
+                            <input
+    type="password"
+    id="password"
+    name="password"
+    placeholder="Enter password"
+    autocomplete="new-password"
+    required
+>
+
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Login button -->
+
+                    <button
+                        type="submit"
+                        class="login-button"
+                    >
+
+                        Sign In to ECG Room
+
+                    </button>
+
+
+                    <!-- Error -->
+
+                    <div
+                        id="loginError"
+                        class="login-error"
+                    ></div>
+
+
+                </form>
+
+
+                <!-- Security -->
+
+                <div class="security-message">
+
+                    🔐 Secure ECG Room Access
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="login-footer">
+
+        Hospital ECG System © 2026
+
+    </div>
+
+
+</div>
+
+
+<!-- =====================================================
+     LOGIN JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    /* =====================================================
+       PASSWORD SHOW / HIDE
+    ===================================================== */
+
+    const togglePassword =
+        document.getElementById(
+            "togglePassword"
+        );
+
+    const password =
+        document.getElementById(
+            "password"
+        );
+
+
+    togglePassword.addEventListener(
+        "click",
+        function () {
+
+            if (
+                password.type === "password"
+            ) {
+
+                password.type = "text";
+
+                togglePassword.textContent =
+                    "🙈";
+
+            } else {
+
+                password.type = "password";
+
+                togglePassword.textContent =
+                    "👁";
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    const loginForm =
+        document.getElementById(
+            "loginForm"
+        );
+
+    const loginError =
+        document.getElementById(
+            "loginError"
+        );
+
+
+    loginForm.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+
+            const username =
+                document
+                    .getElementById("username")
+                    .value
+                    .trim();
+
+
+            const passwordValue =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            loginError.style.display =
+                "none";
+
+
+            if (
+                !username ||
+                !passwordValue
+            ) {
+
+                loginError.textContent =
+                    "Please enter username and password.";
+
+                loginError.style.display =
+                    "block";
+
+                return;
+            }
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+                        "/api/login",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            credentials: "include",
+
+                            body: JSON.stringify({
+
+                                username:
+                                    username,
+
+                                password:
+                                    passwordValue
+
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    loginError.textContent =
+                        data.message ||
+                        "Login failed.";
+
+                    loginError.style.display =
+                        "block";
+
+                    return;
+                }
+
+
+                /*
+                   Login successful.
+                   Go to dashboard.
+                */
+
+                window.location.href =
+                    "/dashboard.html";
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                loginError.textContent =
+                    "Unable to connect to the ECG server.";
+
+                loginError.style.display =
+                    "block";
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>

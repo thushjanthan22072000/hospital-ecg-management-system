@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ECG Recording | Hospital ECG System</title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body class="app-page">
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-mark small">
+            ♥
+        </div>
+
+        <div>
+
+            <strong>
+                ECG CARE
+            </strong>
+
+            <small>
+                Hospital System
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a
+            href="/dashboard.html"
+            class="nav-link"
+        >
+            <span>⌂</span>
+            Dashboard
+        </a>
+
+
+        <a
+            href="/patients.html"
+            class="nav-link"
+        >
+            <span>👥</span>
+            Patients
+        </a>
+
+
+        <a
+            href="/ecg.html"
+            class="nav-link active"
+        >
+            <span>♥</span>
+            ECG Recording
+        </a>
+
+
+        <a
+            href="/history.html"
+            class="nav-link"
+        >
+            <span>▤</span>
+            ECG History
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="secure-mini">
+            🔒 ECG Room Only
+        </div>
+
+
+        <button
+            id="logoutButton"
+            class="logout-button"
+            type="button"
+        >
+            ↪ Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+        <div>
+
+            <span class="eyebrow">
+                ECG MANAGEMENT
+            </span>
+
+            <h1>
+                ECG Recording
+            </h1>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <div
+                id="liveTime"
+                class="live-time"
+            >
+                --:--:--
+            </div>
+
+            <div
+                id="liveDate"
+                class="live-date"
+            >
+                Loading...
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         PATIENT SEARCH
+    ================================================== -->
+
+    <section class="content-card">
+
+    <div class="card-title">
+
+        <div>
+
+            <span class="eyebrow">
+    ECG RECORDING
+</span>
+
+<h2>
+    Record ECG
+</h2>
+
+<p>
+    Enter the visit reference number to load the patient details and record an ECG.
+</p>
+
+        </div>
+
+    </div>
+
+
+    <form id="ecgSearchForm">
+
+        <div class="search-grid">
+
+            <div>
+
+                <label for="ecgReference">
+                    Reference / Visit Number
+                </label>
+
+                <input
+                    type="text"
+                    id="ecgReference"
+                    placeholder="Enter Reference Number"
+                    autocomplete="off"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="primary-button search-button"
+            >
+                🔎 Load Visit
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <div
+    id="ecgPatientMessage"
+    class="message"
+    style="display:none;"
+></div>
+
+</section>
+
+
+
+    <!-- =================================================
+         PATIENT INFORMATION
+    ================================================== -->
+
+    <section
+        id="patientInfo"
+        class="content-card patient-summary-card hidden"
+    >
+    </section>
+
+
+
+    <!-- =================================================
+         ECG FORM
+    ================================================== -->
+
+    <section
+        id="ecgFormCard"
+        class="content-card hidden"
+    >
+
+        <div class="card-title">
+
+            <div>
+
+                <span class="eyebrow">
+                    ECG RECORD
+                </span>
+
+                <h2>
+                    Record ECG
+                </h2>
+
+                <p>
+                    Select the patient's visit and
+                    enter the ECG assessment.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="ecgForm">
+
+
+            <!-- VISIT -->
+
+            <div class="form-grid">
+
+
+                <div class="full">
+
+                    <label for="visitSelect">
+                        Reference / Visit *
+                    </label>
+
+                    <select
+                        id="visitSelect"
+                        required
+                    >
+                    </select>
+
+                    <small class="field-help">
+                        Select the hospital visit for
+                        this ECG recording.
+                    </small>
+
+                </div>
+
+
+
+                <!-- ECG RESULT -->
+
+                <div class="full">
+
+                    <label for="ecgResult">
+                        ECG Result *
+                    </label>
+
+                    <textarea
+                        id="ecgResult"
+                        rows="5"
+                        placeholder="Enter ECG findings / result"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- NOTES -->
+
+                <div class="full">
+
+                    <label for="ecgNotes">
+                        Notes
+                    </label>
+
+                    <textarea
+                        id="ecgNotes"
+                        rows="4"
+                        placeholder="Additional clinical notes"
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- DESTINATION -->
+
+                <div>
+
+                    <label for="destination">
+                        Destination *
+                    </label>
+
+                    <select
+    id="destination"
+    required
+>
+
+    <option value="">
+        Select destination
+    </option>
+
+    <option value="WARD">
+        WARD
+    </option>
+
+    <option value="CLINIC">
+        CLINIC
+    </option>
+
+    <option value="HOME">
+        HOME / DISCHARGED
+    </option>
+
+</select>
+
+                    <small class="field-help">
+                        Select where the patient should
+                        proceed after ECG assessment.
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="ecgMessage"
+                class="message"
+            ></div>
+
+
+
+            <!-- BUTTON -->
+
+            <button
+                type="submit"
+                class="primary-button"
+            >
+                ♥ Save ECG Record
+            </button>
+
+
+        </form>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="app-footer">
+
+        Hospital ECG System © 2026
+
+    </footer>
+
+
+</main>
+
+
+<script src="/js/ecg.js"></script>
+
+</body>
+
+</html>

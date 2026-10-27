@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Register Patient | Hospital ECG System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
+</head>
+
+
+<body class="app-page">
+
+
+<aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-mark small">
+            ♥
+        </div>
+
+        <div>
+
+            <strong>
+                ECG CARE
+            </strong>
+
+            <small>
+                Hospital System
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a
+            href="/dashboard.html"
+            class="nav-link"
+        >
+            <span>⌂</span>
+            Dashboard
+        </a>
+
+
+        <a
+            href="/patients.html"
+            class="nav-link active"
+        >
+            <span>👥</span>
+            Patients
+        </a>
+
+
+        <a
+            href="/ecg.html"
+            class="nav-link"
+        >
+            <span>♥</span>
+            ECG Recording
+        </a>
+
+
+        <a
+            href="/history.html"
+            class="nav-link"
+        >
+            <span>▤</span>
+            ECG History
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="secure-mini">
+            🔒 ECG Room Only
+        </div>
+
+
+        <button
+            type="button"
+            id="logoutButton"
+            class="logout-button"
+        >
+            ↪ Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<main class="main-content">
+
+
+<header class="topbar">
+
+    <div>
+
+        <span class="eyebrow">
+            PATIENT MANAGEMENT
+        </span>
+
+        <h1>
+            Register Patient
+        </h1>
+
+    </div>
+
+
+    <div class="topbar-right">
+
+        <div class="clock">
+
+            <strong id="currentTime">
+                --:--:--
+            </strong>
+
+            <small id="currentDate">
+                Loading...
+            </small>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<section class="content-card">
+
+
+    <div class="card-title">
+
+        <div>
+
+            <span class="eyebrow">
+                NEW PATIENT
+            </span>
+
+            <h2>
+                Register New Patient
+            </h2>
+
+            <p>
+                This reference number is new. Complete the patient's details to create a new Patient ID.
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <form id="registerForm">
+
+
+        <div class="form-grid">
+
+
+            <!-- PATIENT ID -->
+
+            <div>
+
+                <label>
+                    Patient ID
+                </label>
+
+                <input
+                    type="text"
+                    id="newPatientCode"
+                    readonly
+                    placeholder="Generating..."
+                >
+
+                <small class="field-help">
+                    Automatically generated.
+                </small>
+
+            </div>
+
+
+
+            <!-- REFERENCE -->
+
+            <div>
+
+                <label>
+                    Reference Number *
+                </label>
+
+                <input
+                    type="text"
+                    id="referenceNumber"
+                    readonly
+                    required
+                >
+
+                <small class="field-help">
+                    Already checked and confirmed as new.
+                </small>
+
+            </div>
+
+
+
+            <!-- NAME -->
+
+            <div class="full">
+
+                <label>
+                    Full Name *
+                </label>
+
+                <input
+                    type="text"
+                    id="patientName"
+                    required
+                    placeholder="Enter patient's full name"
+                >
+
+            </div>
+
+
+
+            <!-- DOB -->
+
+            <div>
+
+                <label>
+                    Date of Birth *
+                </label>
+
+                <input
+                    type="date"
+                    id="patientDob"
+                    required
+                >
+
+            </div>
+
+
+
+            <!-- AGE -->
+
+            <div>
+
+                <label>
+                    Age
+                </label>
+
+                <input
+                    type="text"
+                    id="patientAge"
+                    readonly
+                    placeholder="Automatic"
+                >
+
+            </div>
+
+
+
+            <!-- NIC -->
+
+            <div>
+
+                <label>
+                    NIC
+                </label>
+
+                <input
+                    type="text"
+                    id="patientNic"
+                    placeholder="NIC if available"
+                >
+
+                <small class="field-help">
+                    NIC is optional for patients under 16.
+                </small>
+
+            </div>
+
+
+
+            <!-- SEX -->
+
+            <div>
+
+                <label>
+                    Sex *
+                </label>
+
+                <select
+                    id="patientSex"
+                    required
+                >
+
+                    <option value="">
+                        Select sex
+                    </option>
+
+                    <option value="Male">
+                        Male
+                    </option>
+
+                    <option value="Female">
+                        Female
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- ADDRESS -->
+
+            <div class="full">
+
+                <label>
+                    Address
+                </label>
+
+                <textarea
+                    id="patientAddress"
+                    rows="4"
+                    placeholder="Enter patient's address"
+                ></textarea>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div
+            id="registerMessage"
+            class="message"
+        ></div>
+
+
+        <button
+            type="submit"
+            class="primary-button"
+        >
+            ✓ Register Patient
+        </button>
+
+
+    </form>
+
+</section>
+
+
+
+<footer class="app-footer">
+
+    Hospital ECG System © 2026
+
+</footer>
+
+
+</main>
+
+
+<script src="/js/register-patient.js"></script>
+
+</body>
+
+</html>
